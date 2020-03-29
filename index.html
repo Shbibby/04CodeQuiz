@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Coding Quiz</title>
+</head>
+
+<body>
+    
+   <!-- Planner ------------------------
+        Main game screen
+            - Welcome header
+            - Short descirption
+            - Play button
+        Final game screen
+            - Finish message 
+            - Enter initial prompt
+            - High score counter
+                - if higher announce score is higher
+                - clear scores button
+                - ask name
+            - Play again button
+        Running the game
+            - Question text
+            - Choice of 4 options
+                - store each question with its answers in objects?
+            - tell if got question wrong or right
+        
+    ------------------------------------------- --> 
+   
+    <!-- Quiz text and button container -->
+    <div id="" class="container" style="margin-top: 100px;">
+
+        <div class="row">
+            <div class="col" style="text-align: center">
+                <h1 id="questionText">
+                <!-- Welcome page and question text gets injected here -->
+
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" style="text-align: center">
+                <p id="welcomeMessage">
+                <!-- Weclome text under header on welcome page -->
+    
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button style="margin-bottom: 7px;" type="button" class="btn btn-danger" id="a1" value="a">
+                    <!-- holds answer choice A text -->
+                    A. 
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button style="margin-bottom: 7px;" type="button" class="btn btn-warning" id="a2" value="b">
+                    <!-- holds answer choice B text -->
+                    B. 
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button style="margin-bottom: 7px;" type="button" class="btn btn-success" id="a3" value="c">
+                    <!-- holds answer choice C text -->
+                    C. 
+                </button>      
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button style="margin-bottom: 7px;" type="button" class="btn btn-primary" id="a4" value="d">
+                    <!-- holds answer choice D text -->
+                    D. 
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr>
+                <p id="rightWrong">
+                    <!-- "correct" or "incorrect" -->
+                </p>
+            </div>
+        </div>
+        
+    </div>
+   
+<script>
+        
+    // test \\
+    
+    // test \\
+
+
+    // Vars for the game \\
+    // ------------------------------- pointers for html
+    var isGameDone = false;
+    var questionText = $("#questionText");
+    var welcomeMessage = $("#welcomeMessage");
+    var ans1 = $("#a1");
+    var ans2 = $("#a2");
+    var ans3 = $("#a3");
+    var ans4 = $("#a4");
+    var rightWrong = $("#rightWrong"); 
+    // ------------------------------- make answers
+    var makeChoiceA = "A. ";
+    var makeChoiceB = "B. ";
+    var makeChoiceC = "C. ";
+    var makeChoiceD = "D. ";
+    // Vars for the game \\
+
+
+    // Question and answers objects \\
+    var answers = {
+        q0 : {question : "Coding Quiz Challenge", a1 : "Click any button", a2 : "Click any button", a3 : "Click any button", a4 : "Click any button"},
+        q1 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q2 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q3 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q4 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q5 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"},
+        q6 : {question : "question", a1 : "A", a2 : "B", a3 : "C", a4 : "D"}
+    };
+    // Question and answers objects \\  
+
+    // make game do \\\
+    function printScreen(itteration){
+        console.log("---------[ printScreen ]---------");
+
+        if (itteration == 0) {
+            questionText.text(answers.q0.question);
+            welcomeMessage.text("This is a 6 question quiz");
+            ans1.text(makeChoiceA + answers.q0.a1);
+            ans2.text(makeChoiceB + answers.q0.a2);
+            ans3.text(makeChoiceC + answers.q0.a3);
+            ans4.text(makeChoiceD + answers.q0.a4);
+            
+        } else if (itteration == 1) {
+            questionText.text(answers.q1.question);
+            welcomeMessage.text("");
+            ans1.text(makeChoiceA + answers.q1.a1);
+            ans2.text(makeChoiceB + answers.q1.a2);
+            ans3.text(makeChoiceC + answers.q1.a3);
+            ans4.text(makeChoiceD + answers.q1.a4);
+            
+        } else if (itteration == 2) {
+            questionText.text(answers.q2.question);
+            welcomeMessage.text("");
+            ans1.text(makeChoiceA + answers.q2.a1);
+            ans2.text(makeChoiceB + answers.q2.a2);
+            ans3.text(makeChoiceC + answers.q2.a3);
+            ans4.text(makeChoiceD + answers.q2.a4);
+            
+        } else if (itteration == 3) {
+            questionText.text(answers.q3.question);
+            welcomeMessage.text("");
+            ans1.text(makeChoiceA + answers.q3.a1);
+            ans2.text(makeChoiceB + answers.q3.a2);
+            ans3.text(makeChoiceC + answers.q3.a3);
+            ans4.text(makeChoiceD + answers.q3.a4);
+            
+        } else if (itteration == 4) {
+            questionText.text(answers.q4.question);
+            welcomeMessage.text("");
+            ans1.text(makeChoiceA + answers.q4.a1);
+            ans2.text(makeChoiceB + answers.q4.a2);
+            ans3.text(makeChoiceC + answers.q4.a3);
+            ans4.text(makeChoiceD + answers.q4.a4);
+            
+        } else if (itteration == 5) {
+            questionText.text(answers.q5.question);
+            welcomeMessage.text("");
+            ans1.text(makeChoiceA + answers.q5.a1);
+            ans2.text(makeChoiceB + answers.q5.a2);
+            ans3.text(makeChoiceC + answers.q5.a3);
+            ans4.text(makeChoiceD + answers.q5.a4);
+            
+        } else if (itteration == 6) {
+            questionText.text(answers.q6.question);
+            welcomeMessage.text("");
+            ans1.text(makeChoiceA + answers.q6.a1);
+            ans2.text(makeChoiceB + answers.q6.a2);
+            ans3.text(makeChoiceC + answers.q6.a3);
+            ans4.text(makeChoiceD + answers.q6.a4);
+            
+        } else if (itteration == 7) {
+            questionText.text(answers.q7.question);
+            welcomeMessage.text("");
+            ans1.text(makeChoiceA + answers.q7.a1);
+            ans2.text(makeChoiceB + answers.q7.a2);
+            ans3.text(makeChoiceC + answers.q7.a3);
+            ans4.text(makeChoiceD + answers.q7.a4);
+            
+        } else if (itteration == 8) {
+            questionText.text(answers.q8.question);
+            welcomeMessage.text("");
+            ans1.text(makeChoiceA + answers.q8.a1);
+            ans2.text(makeChoiceB + answers.q8.a2);
+            ans3.text(makeChoiceC + answers.q8.a3);
+            ans4.text(makeChoiceD + answers.q8.a4);
+            
+        } 
+    }
+    
+    function whatClick(){
+
+        
+        
+        
+
+    }
+
+    // Run the game \\
+    function runTheGame() {
+        console.log("---------[ Game has started ]---------");
+
+        for (var i = 0; i <= 8;){
+            console.log("----------[ "+ i +" ]----------");
+           
+            printScreen(i);
+            ans1.on("click",function(){
+            return a;
+        })
+        }
+      
+    };
+    runTheGame();
+    // Run the game \\
+
+
+
+</script>
+
+    <!-- Jquery import -->
+    <script 
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <!-- Jquery import -->
+
+</body>
+</html> 
